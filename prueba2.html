@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+
+        <input placeholder="Introduce Tarea" v-model="nombre" v-on:keyup.enter="add">
+        <button v-on:click="add">Añadir nueva tarea</button>
+        <nota v-bind:tarea="tarea" v-for="tarea in ordenado"></nota>
+        <h3 v-if="total>0">Tienes un total de {{ total }} de las cuales {{ terminada }} están terminadas</h3>
+        <button v-if="total>0" v-on:click="borrarCompletados">Borrar</button>
+        <form v-if="total>0">
+            <label for="orden">Ordenar Alfabéticamente Ascendente</label>
+            <input type="radio" name="orden" checked value="ascendente" v-model="asc"><br />
+            <label for="orden">Ordenar Alfabéticamente Descendente</label>
+            <input type="radio" name="orden" value="descendente" v-model="asc">
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
